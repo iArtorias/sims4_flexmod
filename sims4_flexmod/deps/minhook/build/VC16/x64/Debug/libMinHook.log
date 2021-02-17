@@ -1,6 +1,0 @@
-﻿  buffer.c
-  hde64.c
-  hook.c
-  trampoline.c
-  Generating Code...
-  libMinHook.vcxproj -> C:\Users\iArtorias\source\repos\sims4_flexmod\x64\Debug\libMinHook.x64.lib
