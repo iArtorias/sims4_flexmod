@@ -23,8 +23,8 @@ NTSTATUS NTAPI CRedirector::hook_NtCreateFile(
         {
             UNICODE_STRING unicode_str{};
             unicode_str.Buffer = new_path.data();
-            unicode_str.Length = static_cast<USHORT>(new_path.length() * 0x2);
-            unicode_str.MaximumLength = unicode_str.Length + 0x2;
+            unicode_str.Length = (USHORT)(new_path.size() * sizeof( wchar_t ));
+            unicode_str.MaximumLength = unicode_str.Length + sizeof( wchar_t );
 
             OBJECT_ATTRIBUTES obj_attributes = *ObjectAttributes;
             obj_attributes.ObjectName = &unicode_str;
@@ -57,8 +57,8 @@ NTSTATUS NTAPI CRedirector::hook_NtOpenFile(
         {
             UNICODE_STRING unicode_str{};
             unicode_str.Buffer = new_path.data();
-            unicode_str.Length = static_cast<USHORT>(new_path.length() * 0x2);
-            unicode_str.MaximumLength = unicode_str.Length + 0x2;
+            unicode_str.Length = (USHORT)(new_path.size() * sizeof( wchar_t ));
+            unicode_str.MaximumLength = unicode_str.Length + sizeof( wchar_t );
 
             OBJECT_ATTRIBUTES obj_attributes = *ObjectAttributes;
             obj_attributes.ObjectName = &unicode_str;
@@ -87,8 +87,8 @@ NTSTATUS NTAPI CRedirector::hook_NtQueryFullAttributesFile(
         {
             UNICODE_STRING unicode_str{};
             unicode_str.Buffer = new_path.data();
-            unicode_str.Length = static_cast<USHORT>(new_path.length() * 0x2);
-            unicode_str.MaximumLength = unicode_str.Length + 0x2;
+            unicode_str.Length = (USHORT)(new_path.size() * sizeof( wchar_t ));
+            unicode_str.MaximumLength = unicode_str.Length + sizeof( wchar_t );
 
             OBJECT_ATTRIBUTES obj_attributes = *ObjectAttributes;
             obj_attributes.ObjectName = &unicode_str;
